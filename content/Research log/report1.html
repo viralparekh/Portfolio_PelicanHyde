@@ -1,0 +1,119 @@
+<html>
+<head>
+
+ <title>Progress Report</title>
+	<meta name="date" content="10-03-2016" /> 
+        <meta name="category" content="Research log" />
+        <meta name="authors" content="Viral Parekh" />
+        <meta name="summary" content="Status Report" />
+
+</head>
+
+<body>
+<h2> GazeLocking </h2>
+<center>
+<img src="{attach}/images/target_nontarget.png" width="500px"/>
+
+</center>
+<h2> Datasets </h2>
+<table class="mytable1" >
+<tr>
+<th></th>
+<th align="center">Columbia Gaze Dataset <a href="http://www.cs.columbia.edu/CAVE/projects/gaze_locking/" target="_blank">Link</a>
+</th>
+<th align="center"> MPIIGaze Dataset <a href="https://www.mpi-inf.mpg.de/departments/computer-vision-and-multimodal-computing/research/gaze-based-human-computer-interaction/appearance-based-gaze-estimation-in-the-wild-mpiigaze/" target="_blank">Link</a>
+</th>
+</tr>
+<tr>
+<th>Total in Dataset</td>
+<td>5880</td>
+<td>214076</td>
+
+</tr>
+<tr>
+<tr>
+<th>After augmentation / sampling</td>
+<td>8180</td>
+<td>18892</td>
+
+</tr>
+<th>Training set</td>
+<td>7000 (2000 Target + 5000 Nontarget)</td>
+<td>15000 (5000 Target + 10000 Nontarget)</td>
+</tr>
+
+</tr>
+<th>Test set</td>
+<td>1180 (200 Target + 980 Nontarget)</td>
+<td>3892 (1892 Target + 2000 Nontarget)</td>
+
+</tr>
+</table>
+<p>
+<h2>Sample images from MPIIGaze Dataset</h2>
+<table>
+<tr>
+<td style=" text-align: center;">Target Images</td>
+<td style=" text-align: center;">Nontarget Images</td>
+
+</tr>
+<tr><td><img src="{attach}/images/mpii_target.jpg" width="300px"/>
+</td>
+<td><img src="{attach}/images/mpii_nontarget.jpg" width="300px"/>
+</td>
+</tr></table>
+
+
+<h2>Experiments</h2>
+
+<table class="mytable1">
+<tr>
+<th colspan="2">Columbia Gaze Dataset</th>
+</tr>
+<tr>
+<td rowspan="2">One Eye<br/><img src="{attach}/images/model1eye.jpg" width="150px"/></td>
+<td>Accuracy with Small network(3 layers Alexnet): <b>72%</b> </td>
+</tr>
+<tr><td> Accuracy with VGG network (4 layers)    : <b>76%</b></td>
+</tr>
+<tr>
+<td rowspan="2">Both Eyes<br/><img src="{attach}/images/model2eyes.jpg" width="150px"/></td>
+<td>Accuracy with Small network(3 layers Alexnet): <b>70%</b> </td> 
+</tr>
+<tr><td>Accuracy with VGG network (4 layers): <b>65%</b></td>
+
+</tr>
+
+
+
+<tr>
+<th colspan="2">MPIIGaze Dataset</th>
+</tr>
+<tr>
+<td One Eye<br/><img src="{attach}/images/model1eye.jpg" width="150px"/></td>
+<td>Accuracy with VGG network (4 layers): <b>87%</b></td>
+</tr>
+<tr>
+<td >Both Eyes<br/><img src="{attach}/images/model2eyes.jpg" width="150px"/></td>
+<td>Accuracy with VGG netwrok(4 layers): <b>90%</b> </td>
+</tr>
+
+</table>
+
+<h2>Results </h2>
+<table><tr><th>
+Test Accuracy : 87% to 92% (checked on original dataset 5880 images)<br/>
+
+</th></tr></table>
+
+<h2>Output of an image after first convolutional layer <h2>
+<img src="{attach}/images/layer1_op.jpg" width="500px"/>
+
+
+<p>
+IUI 2017 <a href="http://iui.acm.org/2017/cfp.html">Link</a>: 
+<br/>Abstruct Submission : 9th OCT
+<br/>Short Paper Submission :14th OCT
+
+</body>
+</html>

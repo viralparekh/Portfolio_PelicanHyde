@@ -1,0 +1,9 @@
+
+table.mytable1,table.mytable1 th,table.mytable1 td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table.mytable1 th{
+     background-color: #98AFC7;
+     }
