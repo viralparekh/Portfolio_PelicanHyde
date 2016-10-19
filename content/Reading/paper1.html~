@@ -30,11 +30,11 @@ to extract the corresponding image features for automated classification.
 </li>
 </ul>
 
-
-
-
 Extracting features from EEG using LSTM encoder
 <img src="{attach}/images/eeg_features_lstm.png" width="500px"/>
+
+
+
 
 Pipeline for Automated visual classification
 <img src="{attach}/images/pipeline_dlhmmodel.png" width="500px"/>
