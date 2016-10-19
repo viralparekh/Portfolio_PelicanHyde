@@ -11,26 +11,29 @@
 
 <body>
 
-<h3>Claim</h3>
-<h3>Method</h3>
+<a href="https://arxiv.org/pdf/1609.00344v1.pdf" target="_blank">link to paper </a>
+<br/>
+<br/>
 
 The work described in this paper relies on three key intuitions:
 <ul>
 <li>EEG signals recorded while a subject looks at an image convey feature-level
 and cognitive-level information about the image content.</li>
 <li>
-A low-dimensional manifold within the multi-dimensional and temporally-
-varying EEG signals exists and can be extracted to obtain a 1D represen-
+A low-dimensional manifold within the multi-dimensional and temporally varying EEG signals exists and can be extracted to obtain a 1D represen-
 tation which we refer to as
 EEG features.</li>
 <li>
-EEG features
-are assumed to mainly encode visual data, thus it is possible
-to extract the corresponding image features for automated classification.
+EEG features are assumed to mainly encode visual data, thus it is possible to extract the corresponding image features for automated classification.
 </li>
 </ul>
 
 
+<h3>Method</h3>
+
+EEG data was recorded while participants were shown sequence of images.
+<br/>
+<br/>
 Experiment Details : 
 
 <table class="mytable1" >
@@ -54,28 +57,32 @@ Experiment Details :
 
 </table>
 
-Steps by step explaination
+<h4>Steps by step explaination</h4>
+
 <ol>
 <li>Using LSTM based encoder, EEG features are extracted. Classification is performed based on image category as target to get classification accuracy</li>
 <li>EEG features extracted on above steps are used as target to train the CNN, to get eeg feature representation of images</li>
 <li>Image classification is done using features obtained from CNN mentioned in above steps</li>
 </ol>
-
-Extracting features from EEG using LSTM encoder
+<br/>
+<br/>
+<h4>Extracting features from EEG using LSTM encoder</h4>
 <img src="{attach}/images/eeg_features_lstm.png" width="500px"/>
 
-Pipeline for Automated visual classification
+<h4>Pipeline for Automated visual classification</h4>
 <img src="{attach}/images/pipeline_dlhmmodel.png" width="500px"/>
 
 
 <h3>Results</h3>
 
-Classification of EEG features generated from LSTM network
-<img src="{attach}/images/accuracy_for_eegfeatures.png" width="500px"/>
+<h4>Classification of EEG features generated from LSTM network</h4>
+<img src="{attach}/images/accuracy_for_eegfeatures.png" width="400px"/>
 
-Automated visual classification: 
+<h4>Automated visual classification: </h4>
 Here, EEG data is not used for classification, eeg features are acquired from trained CNN model for images, they are used for classification purposes.
-<img src="{attach}/images/accuracy_caltech.png" width="500px"/>
+<br/>
+<br/>
+<img src="{attach}/images/accuracy_caltech.png" width="300px" align="left"/>
 
 
 
