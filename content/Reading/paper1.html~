@@ -31,7 +31,35 @@ to extract the corresponding image features for automated classification.
 </ul>
 
 
+Experiment Details : 
 
+<table class="mytable1" >
+<tr>
+<th>Number of image categories</th>
+<td>40 (subset of Imagenet)</td>
+</tr>
+<tr>
+<th>Number of Subjects</th>
+<td>7 (6 male + 1 female)</td>
+</tr>
+<tr>
+<th>EEG device specification</th>
+<td>32 channel, 250 Hz</td>
+</tr>
+
+<tr>
+<th>Data acquired</th>
+<td rowspan="2">EEG data for 14000 images total (2000 images for 7 subjects)</td>
+</tr>
+
+</table>
+
+Steps by step explaination
+<ol>
+<li>Using LSTM based encoder, EEG features are extracted. Classification is performed based on image category as target to get classification accuracy</li>
+<li>EEG features extracted on above steps are used as target to train the CNN, to get eeg feature representation of images</li>
+<li>Image classification is done using features obtained from CNN mentioned in above steps</li>
+</ol>
 
 Extracting features from EEG using LSTM encoder
 <img src="{attach}/images/eeg_features_lstm.png" width="500px"/>
@@ -39,21 +67,6 @@ Extracting features from EEG using LSTM encoder
 Pipeline for Automated visual classification
 <img src="{attach}/images/pipeline_dlhmmodel.png" width="500px"/>
 
-<table class="mytable1" >
-<tr>
-<td>Number of image categories</td>
-<td>40 (subset of Imagenet)</td>
-</tr>
-<tr>
-<td>Number of Subjects</td>
-<td>7 (6 male + 1 female)</td>
-</tr>
-<tr>
-<td>EEG device specification</td>
-<td>32 channel, 250 Hz</td>
-</tr>
-
-</table>
 
 <h3>Results</h3>
 
@@ -61,7 +74,7 @@ Classification of EEG features generated from LSTM network
 <img src="{attach}/images/accuracy_for_eegfeatures.png" width="500px"/>
 
 Automated visual classification: 
-Accuracy on Caltech dataset.
+Here, EEG data is not used for classification, eeg features are acquired from trained CNN model for images, they are used for classification purposes.
 <img src="{attach}/images/accuracy_caltech.png" width="500px"/>
 
 
