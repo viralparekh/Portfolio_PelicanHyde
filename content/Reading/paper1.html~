@@ -30,17 +30,30 @@ to extract the corresponding image features for automated classification.
 </li>
 </ul>
 
+
+
+
 Extracting features from EEG using LSTM encoder
 <img src="{attach}/images/eeg_features_lstm.png" width="500px"/>
-
-
-
 
 Pipeline for Automated visual classification
 <img src="{attach}/images/pipeline_dlhmmodel.png" width="500px"/>
 
+<table class="mytable1" >
+<tr>
+<td>Number of image categories</td>
+<td>40 (subset of Imagenet)</td>
+</tr>
+<tr>
+<td>Number of Subjects</td>
+<td>7 (6 male + 1 female)</td>
+</tr>
+<tr>
+<td>EEG device specification</td>
+<td>32 channel, 250 Hz</td>
+</tr>
 
-
+</table>
 
 <h3>Results</h3>
 
