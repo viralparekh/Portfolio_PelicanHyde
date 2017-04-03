@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link href="http://gmpg.org/xfn/11" rel="profile">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+		<!-- Enable responsiveness on mobile devices-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+		<title>Viral Parekh</title>
+
+		<!-- CSS -->
+		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
+		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://researchweb.iiit.ac.in/~parekh.viral/theme/css/poole.css" />
+		<link rel="stylesheet" href="https://researchweb.iiit.ac.in/~parekh.viral/theme/css/hyde.css" />
+		<link rel="stylesheet" href="https://researchweb.iiit.ac.in/~parekh.viral/theme/css/syntax.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!-- RSS -->
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+	</head>
+
+	<body class="theme-base-0d">
+<div class="sidebar">
+	<div class="container sidebar-sticky">
+		<div class="sidebar-about">
+
+			<h1>
+				<a href="/">
+					<img class="profile-picture" src="https://researchweb.iiit.ac.in/~parekh.viral/images/me.jpg">
+					Viral Parekh
+				</a>
+			</h1>
+			<p class="lead"></p>
+			<p class="lead">Research Scholar @IIIT Hyderabad, Maker , Foodie, Pro Gujarati, Chef & Writer in progress. </p>
+			<p></p>
+		</div>
+		<nav class="sidebar-nav">
+					<a class="sidebar-nav-item" href="https://twitter.com/viralmparekh">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a class="sidebar-nav-item" href="https://facebook.com/viral034">
+						<i class="fa fa-facebook"></i>
+					</a>
+					<a class="sidebar-nav-item" href="https://github.com/viralparekh">
+						<i class="fa fa-github"></i>
+					</a>
+					<a class="sidebar-nav-item" href="https://www.quora.com/profile/Viral-Parekh">
+						<i class="fa fa-quora"></i>
+					</a>
+					<a class="sidebar-nav-item" href="mailto:viral@live.in">
+						<i class="fa fa-envelope"></i>
+					</a>
+			
+		</nav>
+	</div>
+</div>		<div class="content container">
+<div class="post">
+	<h1 class="post-title">Hacking your vim with python</h1>
+	<span class="post-date">Tue 10 January 2017</span>
+	<p>I'm happy vim user for a while now. After learned the basics I started customize
+the editor to my needs/preferences and for a long time everything were well. I
+did not face anything that I could not do and this is still true. However, when
+I became a more advanced user and decide to create more complex functions to help
+me while I work in my source code files, something discouraged me go ahead: the
+vim language (VimL). Don't judge me, I could study it but I do not have time and
+desire to do that. So, for some time I do not create more interesting stuff because
+of that. But a short time ago I discovered that I could write python script to
+interact with vim, like buffer, windows, tabs and so on! That's great!</p>
+<p>This article is about how create a very simple script to read data from buffer and
+update them. :-)</p>
+<p>Before you start write python script to do the magic in your vim buffer it is
+necessary take a look if you vim allow you use python. For that you can run the
+<code>vim --version</code> and see if your vim has python support. The output should show
+something like <code>+python</code></p>
+<h3>Scripting</h3>
+<p>There are some way you can execute a python code in vim. You can use the commands:
+<code>:py[thon]</code>, <code>:pydo</code>, <code>:pyfile</code>. In this article I'll do a short description of
+them, but I'll use just <code>:pyfile</code> in the example.</p>
+<p>When you decide write the python script you can write it in a separated file
+or embedded it in your vimrc. If you do not want write file for you script you
+can use the <code>:[range]python</code> or</p>
+<div class="highlight"><pre><span></span>:[range]py[thon] &lt;&lt; {endmarker}
+{script}
+{endmarker}
+</pre></div>
+
+
+<p>The first option is useful if you want to execute a single python statement.
+For example: <code>:python print "Python rocks!"</code>. The second way is more interesting,
+it is allows embedded the python code inside vim script. Take a look:</p>
+<div class="highlight"><pre><span></span>function! IcecreamInitialize()
+python3 &lt;&lt; EOF
+class StrawberryIcecream:
+    def __call__(self):
+        print(&#39;EAT ME&#39;)
+ice = StrawberryIcecream()
+ice()
+EOF
+endfunction
+</pre></div>
+
+
+<p>Another option is the <code>[range]pydo {body}</code> command. It is a good option if the
+script should be executed in each line of the range. In this command the <code>{body}</code>
+is executed as <code>def _vim_pydo(line, linenr) {body}</code>. Thus, the body script can
+get the line text and number from arguments. The function should return a string
+or None. If a string is returned the line is updated to that value. A possible
+example is <code>:pydo return "%s\t%d" % (line[::-1], len(line))</code></p>
+<p>Last but not least is the <code>:[range]pyf[ile] {file}</code> command. It allows load a
+separated python file and call its function with <code>:py</code> command. This is the
+command used to load the python script in the following example.</p>
+<h3>Vim module</h3>
+<p>To make possible the integration between python and vim there is a python module.
+This module gives you the ability to interact with buffers, windows, tabs,
+execute vim commands and so on. This module has a bunch of methods, constants
+and objects that might used for the scripts. This article will use just a few
+of the features available in the module. They are: <code>vim.command(str)</code>;
+<code>vim.current</code>; and <code>Buffer.mark()</code>.</p>
+<p>You can see a better documentation of the module typing <code>:help python</code> in you
+vim editor.</p>
+<h3>Let's hack!</h3>
+<p>Let's dive deeper in the example. In this example the author of the script is
+a guy that has the boring job to write the current weather of bunch of cities
+sitting in some file. Wisely he/she decided automate that process. (Yes, it is not
+the ideal real life use case but I am not a creative person, sorry... xD). So, after
+some time reading the documentation a python script was born:</p>
+<div class="gist">
+    <script src='https://gist.github.com/b02e61147a7f05a2a308b3d5b1d0d382.js?file=weather.py'></script>
+    <noscript>
+        <pre><code>#!/usr/bin/env python3
+
+import vim
+from requests import get
+
+OPEN_WEATHER_API_KEY = "your Open Weather API key"
+
+def get_weather():
+    """
+    Get weather from each line in the buffer
+    """
+    buff = vim.current.buffer
+    for idx, line in enumerate(buff):
+        buff[idx] = line + "\t" + get_openweather(line)["weather"][0]["main"] # append the weather in the line
+
+
+def get_weather_selection():
+    """
+    Use the selected text to get the weather and append it in the selection row
+    """
+    buf = vim.current.buffer # get current vim buffer
+    start = buf.mark("<") # get the begin of the selection
+    end = buf.mark(">") # get the end of the selection
+    location = get_text(start, end) # get the selection text with the city name
+    line = buf[end[0]-1] + "\t" + get_openweather(location)["weather"][0]["main"] # append the weather in the line
+    buf[end[0]-1] = line # update line in the buffer
+
+def get_text(start, end):
+    """
+    Get text between start and end delimiters
+    """
+    buf = vim.current.buffer
+    text = ""
+    for line in buf[start[0]-1:end[0]]:
+        text += line
+    last_index = (len(text) - len(buf[end[0]-1])) + end[1] + 1
+    return text[start[1]:last_index]
+
+def get_openweather(city):
+    url="http://api.openweathermap.org/data/2.5/weather" # open weather endpoint
+    payload = {"q": city, "APPID": OPEN_WEATHER_API_KEY} # prepare the request params
+    request = get(url, payload) # send request to the Open Weather API
+    return request.json()</code></pre>
+    </noscript>
+</div>
+<p>It has the following features:</p>
+<ul>
+<li>function that will iterate over all rows of the current buffer
+and append the current weather for the city (the row's content is used as city's
+name)</li>
+<li>function that will use the selected text as city's and append the weather in
+the row of the selection</li>
+</ul>
+<p>Okay, let's take a closer look... The method <code>get_weather()</code> allow the user gets
+the weather for city names sitting on each line of the current buffer. It's nice
+to highlight the <code>vim.current</code> object. This object provides access to
+various objects in vim. That is:</p>
+<ul>
+<li><code>vim.current.line</code>: current line (string)</li>
+<li><code>vim.current.buffer</code>: current buffer (Buffer object)</li>
+<li><code>vim.current.window</code>: current window (Window object)</li>
+<li><code>vim.current.tabpage</code>: current tab page (TabPage object)</li>
+<li><code>vim.current.range</code>: current line range (Range object)</li>
+</ul>
+<p>That been said, the line <code>buff = vim.current.buffer</code> is getting the current buffer
+to iterate and update it. After that, the script iterate over all buffer's rows
+calls the Open Weather API to get the weather using the row's content as city's
+name and update the row with the current value appended with the weather.</p>
+<p>The <code>get_weather_selection()</code> is the method that uses the selected text as city
+to call the weather API. In this method, again, a reference to the current
+buffer is gotten and used the <code>buf.mark()</code> method of the <code>Buffer</code> object to get
+the line and column of the start and end of the selection. In vim the marks "&lt;"
+and "&gt;" is used to define the beginning and end of the selected text respectively.</p>
+<p>Once we have the marks values the script calls a helper function who extract the
+selected text from the buffer and returns it. After that, the weather API is called
+and the weather is appended after the selection</p>
+<p>The <code>get_text(start, end)</code> and <code>get_openweather(city)</code> methods are helper methods.
+First one is able to extract text from the buffer using tuples of (line, column)
+passed as arguments to delimitate the text should be returned. The second one
+is just a call to the Open Weather API using the python request module.</p>
+<p>Once the script is done it can be loaded with the <code>pyf {file}</code> command.
+As the script in discussion is a python3 code, it has to be load using the
+equivalent command to python3, that is: <code>py3file $HOME/.vim/weather.py</code>. After
+added this line in the vimrc, it is ready to go and the methods can be called
+with:</p>
+<p><code>py3 get_weather()</code> or <code>:'&lt;,'&gt;py3 get_weather_selection()</code>.</p>
+<p>NOTE: be aware that there are equivalent commands, <code>py3</code>, <code>py3do</code> and <code>py3f</code> to
+run/load python3 code. See more in the python3 section in the vim documentation</p>
+<h4>Buffer</h4>
+<p>The most important object in the example is Buffer. Buffer objects can be treat
+as sequence object. Thus, they act like lists and are mutable and to update
+a row it is necessary just assign the new value,
+<code>vim.current.buffer[1] = "new value for the line 2"</code>. Remember, lists
+indexing start with 0 and the lines in a vim buffer with 1. In the script is
+possible see the lines being updated at lines 14 and 26.</p>
+<p>It is also possible delete lines, <code>:py del vim.current.buffer[1]</code> (delete the second
+row). Append new lines, <code>:py vim.current.buffer.append("bottom")</code>. Assign variables,
+<code>:py vim.current.buffer.vars["foo"] = "bar"</code>, and so on. You can see a complete
+description with all methods and attribute with <code>:help python</code></p>
+<h3>Your turn</h3>
+<p>This is a very, very simple example of how you can start script vim with python.
+I encourage you to read the vim documentation, play with it and create crazy
+stuff! =)</p>
+<p>If you need more info take a look in the references, send me an e-mail or leave
+a comment. Thanks you!</p>
+<h4>References</h4>
+<p><code>:help python</code> in your vim editor</p>
+<p><a href="https://github.com/jvanz/dotfiles/blob/master/.vim/weather.py">weather.py</a></p>
+<p><a href="http://old.orestis.gr/blog/2008/08/10/scripting-vim-with-python/">Scripting Vim with Python</a></p>
+</div>
+		</div>
+	</body>
+</html>
