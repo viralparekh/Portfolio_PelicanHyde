@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
 	<head>
+
+
+
 		<link href="http://gmpg.org/xfn/11" rel="profile">
+   <link rel="icon" href="{{ SITEURL }}/images/{{ PROFILE_IMAGE }}">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
@@ -27,8 +31,26 @@
 	<body class="theme-base-0d">
 		{% include 'sidebar.html' %}
 		<div class="content container">
+   <!-- Scroll up code -->
+   <button onclick="topFunction()" id="scrollup" title="Go to top">Top</button>
+   <script>
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              document.getElementById("scrollup").style.display = "block";
+          } else {
+              document.getElementById("scrollup").style.display = "none";
+          }
+      }
+      function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+      }
+    </script>
+    <!-- Scroll up code -->
 			{% block content %}
 			{% endblock %}
 		</div>
+       <a href="#" class="scrollup">Scroll</a>
 	</body>
 </html>
