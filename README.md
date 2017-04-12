@@ -1,4 +1,5 @@
-# research_log
+# Personal web page
 
-My personal research logs.
-Framework : pelican
+- live at  https://researchweb.iiit.ac.in/~parekh.viral/
+- Framework : Pelican   (http://docs.getpelican.com/en/stable/)
+- Theme     : Modified __pelican hyde__ (https://github.com/jvanz/pelican-hyde)
