@@ -15,11 +15,11 @@
 		<nav class="sidebar-nav">
 			{% for name, link in SOCIAL %}
 				{% if name == 'email' %}
-					<a class="sidebar-nav-item" href="mailto:{{ link }}">
+					<a class="sidebar-nav-item" href="mailto:{{ link }}" target="_blank">
 						<i class="fa fa-envelope"></i>
 					</a>
 				{% else %}
-					<a class="sidebar-nav-item" href="{{ link }}">
+					<a class="sidebar-nav-item" href="{{ link }}" target="_blank">
 						<i class="fa fa-{{ name }}"></i>
 					</a>
 				{% endif %}
@@ -27,4 +27,6 @@
 			
 		</nav>
 	</div>
+
 </div>
+
