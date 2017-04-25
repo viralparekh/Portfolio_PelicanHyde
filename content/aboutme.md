@@ -3,7 +3,7 @@ Date: 2017-04-02 22:55
 Tags: about
 Author: Viral Parekh
 
-I am currently pursuing __MS (by Research) in Computer Science and Engineering__ at [IIIT-Hyderabad](https://iiit.ac.in){:target="_blank"}. My area of research includes Machine Learning, Computer Vision and Human-Computer Interfaces. I am working as a research assistant at [Center for Visual Information Technology (CVIT)](https://cvit.iiit.ac.in){:target="_blank"}, under the guidance of [Prof. C. V. Jawahar](https://faculty.iiit.ac.in/~jawahar){:target="_blank"} and [Prof. Ramanathan Subramanian](https://sites.google.com/site/raamsubram){:target="_blank"}. As part of my program, I have studied Machine learning, Computer Vision and Optimization Methods subjects.
+I am currently pursuing __MS (by Research) in Computer Science and Engineering__ at [IIIT-Hyderabad](https://iiit.ac.in){:target="_blank"}. My area of research includes Machine Learning, Computer Vision and Human-Computer Interfaces. I am working as a research assistant at [Center for Visual Information Technology (CVIT)](https://cvit.iiit.ac.in){:target="_blank"}, under the guidance of [Prof. C. V. Jawahar](https://faculty.iiit.ac.in/~jawahar){:target="_blank"} and [Dr. Ramanathan Subramanian](https://sites.google.com/site/raamsubram){:target="_blank"}. As part of my program, I have studied Machine learning, Computer Vision and Optimization Methods subjects.
 
 Besides my research work, I have developed a web based internal training portal for CVIT lab and I am one of the admins of a GPU Cluster (12 Nvidia TitenX, Nvidia Tesla K40) .
 
